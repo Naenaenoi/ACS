@@ -1,3 +1,8 @@
+#sympy & numpy libraries for LaTeX equations
+#from sympy.interactive import printing
+#printing.init_printing(use_latex = True)
+#import numpy as np
+#import sympy as sp
 import math
 import os
 import sys
@@ -56,6 +61,7 @@ def subs(base,x):
     return base + z
 
 def dSolver():
+    os.system('cls')
     ans = False
     while ans == False:
         print("Select input mode")
@@ -114,6 +120,9 @@ def mainMenu():
     elif selector == 'exit':
         sys.exit()
         
+    else: 
+        print("Invalid selection")
+        
 mainMenu()
 
 
@@ -122,7 +131,7 @@ mainMenu()
 def infoPage():
     os.system('cls')
 
-    print("ACS version 1.1.0            Last updated: 1/4/2023")
+    print("ACS version 1.1.0            Last updated: 1/5/2023")
     print('')
     print("ACS or Automatic Calculus Solver is a program intended to solve different types of formulas/equations in calculus. ")
     print('')
