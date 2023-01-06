@@ -3,15 +3,6 @@
 
 #Tester for entire equation input instead of individual characters
 import os
-def remover(List, item):
- 
-    # remove the item for all its occurrences
-    c = List.count(item)
-    for i in range(c):
-        List.remove(item)
- 
-    return List
-
 
 os.system('cls')
 print("Enter equation")
