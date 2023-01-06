@@ -3,13 +3,15 @@
 
 #Tester for entire equation input instead of individual characters
 import os
+import sympy as sp
 
 os.system('cls')
 print("Enter equation")
 print("")
 inp1 = input()
 [*inp1]
-
+#Sample equation: 5X^2 + 13X + 2
 res = [ele for ele in inp1 if ele.strip()]
 
-print(res)    
+print(res)
+

@@ -1,8 +1,6 @@
 #sympy & numpy libraries for LaTeX equations
-#from sympy.interactive import printing
-#printing.init_printing(use_latex = True)
-#import numpy as np
-#import sympy as sp
+import sympy
+import numpy
 import math
 import os
 import sys
