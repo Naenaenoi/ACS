@@ -21,4 +21,4 @@ inp1 = input()
 
 res = [ele for ele in inp1 if ele.strip()]
 
-print(res)
+print(res)    
