@@ -1,6 +1,6 @@
 #sympy & numpy libraries for LaTeX equations
-import sympy
-import numpy
+import sympy as sp
+import numpy as np
 import math
 import os
 import sys
