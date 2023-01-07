@@ -3,6 +3,7 @@
 #printing.init_printing(use_latex = True)
 #import numpy as np
 #import sympy as sp
+import funny
 import math
 import os
 import sys
