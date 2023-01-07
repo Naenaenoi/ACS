@@ -1,14 +1,12 @@
 #sympy & numpy libraries for LaTeX equations
-<<<<<<< HEAD
+
 #from sympy.interactive import printing
 #printing.init_printing(use_latex = True)
 #import numpy as np
 #import sympy as sp
 import funny
-=======
 import sympy as sp
 import numpy as np
->>>>>>> 5d825b68c7f974b700ef4ea97a78c4077001c401
 import math
 import os
 import sys
