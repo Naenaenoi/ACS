@@ -23,6 +23,11 @@ i = float
 
 res = [float(i) for i in res]
 
+for i in res:
+    float(i)
+    
+        
+
 print(res)
 
 
