@@ -19,21 +19,29 @@ inp1 = input()
 #Sample equation: 5X^2 + 13X + 2
 res = [ele for ele in inp1 if ele.strip()]
 
+i = float
+
+res = [float(i) for i in res]
+
+print(res)
+
+
+
 nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ops = [ '+','-','=']
 var = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-i = int
+
 
 error = False
 
-try:
-    res = [int(i) for i in res]
-except:
-    error = True
-    if error == True:
+#try:
+
+#except:
+    #error = True
+   # if error == True:
         
 
-print(res)
+
 
 """
 x = sp.Symbol('X')
