@@ -24,10 +24,14 @@ ops = [ '+','-','=']
 var = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 i = int
 
+error = False
+
 try:
     res = [int(i) for i in res]
 except:
-    
+    error = True
+    if error == True:
+        
 
 print(res)
 
