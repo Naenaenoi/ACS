@@ -9,6 +9,16 @@ printing.init_printing(use_latex = True)
 import sympy as sp
 import numpy as np
 
+dict3 = {'X': '1',
+         '^': '0.001',
+         '+': '0.002',
+         '-': '0.003',
+         '=': '0.004',
+}
+
+def specialCharacters(x):
+    z = '{}'.format(dict3.get(x))
+    return x
 
 os.system('cls')
 print("Enter equation")
@@ -19,16 +29,13 @@ inp1 = input()
 #Sample equation: 5X^2 + 13X + 2
 res = [ele for ele in inp1 if ele.strip()]
 
-i = float
 
-res = [float(i) for i in res]
-
-for i in res:
-    float(i)
+try:
+    res = [float(i) for i in res]
+except ValueError:
+    specialCharacters(ValueError)
     
-        
-
-print(res)
+print(res, ValueError)
 
 
 
