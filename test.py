@@ -12,12 +12,12 @@ import numpy as np
 
 
 os.system('cls')
-
+"""
 def dSolver(inputList):
     for element in inputList:
         output = sp.diff(inputList)
         return output
-
+"""
 operators = ['+','-','*','/','^']
 
 def sep_list_ops(expression):
@@ -58,9 +58,9 @@ res = [ele for ele in inp1 if ele.strip()]
 
 separated_list = sep_list_ops(res)
 organized_list = sep_list_vars(separated_list)
-answer = dSolver(organized_list)
+#answer = dSolver(organized_list)
 
-print(answer)
+print(organized_list)
 
 
 nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
