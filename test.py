@@ -9,16 +9,6 @@ printing.init_printing(use_latex = True)
 import sympy as sp
 import numpy as np
 
-dict3 = {'X': '1',
-         '^': '0.001',
-         '+': '0.002',
-         '-': '0.003',
-         '=': '0.004',
-}
-
-def specialCharacters(x):
-    z = '{}'.format(dict3.get(x))
-    return x
 
 os.system('cls')
 print("Enter equation")
@@ -29,22 +19,32 @@ inp1 = input()
 #Sample equation: 5X^2 + 13X + 2
 res = [ele for ele in inp1 if ele.strip()]
 
+res = [int(i) for i in res]
 
-try:
-    res = [float(i) for i in res]
-except ValueError:
-    specialCharacters(ValueError)
     
-print(res, ValueError)
+print(res)
 
+operators = ['+', '-', '*', '/']
 
+def separate_list(expression):
+    sublists = []
+    current_sublist = []
+    for element in expression:
+        if element in operators:
+            sublists.append(current_sublist)
+            current_sublist = []
+            sublists.append([element])
+        else:
+            current_sublist.append(element)
+    sublists.append(current_sublist)
+    return sublists
 
 nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-ops = [ '+','-','=']
+ops = [ '+','-','=','/','*']
 var = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 
-error = False
+#error = False
 
 #try:
 
