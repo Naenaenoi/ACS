@@ -11,22 +11,16 @@ import numpy as np
 
 
 os.system('cls')
-print("Enter equation")
-print("")
-inp1 = input()
 
-[*inp1]
-#Sample equation: 5X^2 + 13X + 2
-res = [ele for ele in inp1 if ele.strip()]
+def dSolver(inputList):
+    x = sp.Symbol('X')
+    for ele in inputList:
+        output = sp.diff(x**ele)
+        return output
 
-res = [int(i) for i in res]
+operators = ['+', '-', '*', '/','^']
 
-    
-print(res)
-
-operators = ['+', '-', '*', '/']
-
-def separate_list(expression):
+def sep_list_ops(expression):
     sublists = []
     current_sublist = []
     for element in expression:
@@ -38,6 +32,37 @@ def separate_list(expression):
             current_sublist.append(element)
     sublists.append(current_sublist)
     return sublists
+
+variables = ['X','Y']
+
+def sep_list_vars(expression):
+    sublists = []
+    current_sublist = []
+    for element in expression:
+        if element in variables:
+            sublists.append(current_sublist)
+            current_sublist = []
+            sublists.append([element])
+        else:
+            current_sublist.append(element)
+    sublists.append(current_sublist)
+    return sublists
+
+print("Enter equation")
+print("")
+inp1 = input()
+[*inp1]
+
+res = [ele for ele in inp1 if ele.strip()]
+
+separated_list = sep_list_ops(res)
+organized_list = sep_list_vars(separated_list)
+
+dSolver(organized_list)
+
+
+#Sample equation: 5X^2 + 13X + 2
+
 
 nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ops = [ '+','-','=','/','*']
