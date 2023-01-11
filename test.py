@@ -2,7 +2,7 @@
 
 
 #Tester for entire equation input instead of individual characters
-#import latex
+import math
 import os
 from sympy.interactive import printing 
 printing.init_printing(use_latex = True)
@@ -10,15 +10,15 @@ import sympy as sp
 import numpy as np
 
 
+
 os.system('cls')
 
 def dSolver(inputList):
-    x = sp.Symbol('X')
-    for ele in inputList:
-        output = sp.diff(x**ele)
+    for element in inputList:
+        output = sp.diff(inputList)
         return output
 
-operators = ['+', '-', '*', '/','^']
+operators = ['+','-','*','/','^']
 
 def sep_list_ops(expression):
     sublists = []
@@ -48,6 +48,7 @@ def sep_list_vars(expression):
     sublists.append(current_sublist)
     return sublists
 
+#Sample equation: 5X^2 + 13X + 2
 print("Enter equation")
 print("")
 inp1 = input()
@@ -57,30 +58,20 @@ res = [ele for ele in inp1 if ele.strip()]
 
 separated_list = sep_list_ops(res)
 organized_list = sep_list_vars(separated_list)
+answer = dSolver(organized_list)
 
-dSolver(organized_list)
-
-
-#Sample equation: 5X^2 + 13X + 2
+print(answer)
 
 
 nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ops = [ '+','-','=','/','*']
 var = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
-
-#error = False
-
-#try:
-
-#except:
-    #error = True
-   # if error == True:
         
 
 
-
 """
+
 x = sp.Symbol('X')
 
 print(sp.diff(x**inp1))
