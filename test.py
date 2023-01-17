@@ -13,13 +13,19 @@ import numpy as np
 
 
 os.system('cls')
+x = sp.Symbol('X')
+
+special_Characters = ['+','-','*','/','^','X','Y']
 
 def dSolver(inputList):
-    x = Symbol('X')
-    for list in inputList:
-        for ele in list:
-            output = sp.diff(x** ele)
-            return output
+    for element in inputList:
+        if element in special_Characters:
+            continue
+        else:
+            for element in inputList:
+                int(element) 
+                output = sp.diff(x**element)
+                return output
 
 operators = ['+','-','*','/','^']
 
