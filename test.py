@@ -14,9 +14,10 @@ import numpy as np
 os.system('cls')
 """
 def dSolver(inputList):
-    for element in inputList:
-        output = sp.diff(inputList)
-        return output
+    for list in inputList:
+        for ele in list:
+            output = sp.diff(x** ele)
+            return output
 """
 operators = ['+','-','*','/','^']
 
