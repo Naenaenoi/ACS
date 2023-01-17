@@ -22,10 +22,9 @@ def dSolver(inputList):
         if element in special_Characters:
             continue
         else:
-            for element in inputList:
-                int(element) 
-                output = sp.diff(x**element)
-                return output
+            int(element) 
+            output = sp.diff(x**element)
+            return output
 
 operators = ['+','-','*','/','^']
 
