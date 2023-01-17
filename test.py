@@ -4,6 +4,7 @@
 #Tester for entire equation input instead of individual characters
 import math
 import os
+from sympy import Symbol, symbols
 from sympy.interactive import printing 
 printing.init_printing(use_latex = True)
 import sympy as sp
@@ -12,13 +13,14 @@ import numpy as np
 
 
 os.system('cls')
-"""
+
 def dSolver(inputList):
+    x = Symbol('X')
     for list in inputList:
         for ele in list:
             output = sp.diff(x** ele)
             return output
-"""
+
 operators = ['+','-','*','/','^']
 
 def sep_list_ops(expression):
@@ -59,9 +61,9 @@ res = [ele for ele in inp1 if ele.strip()]
 
 separated_list = sep_list_ops(res)
 organized_list = sep_list_vars(separated_list)
-#answer = dSolver(organized_list)
+answer = dSolver(organized_list)
 
-print(organized_list)
+print(answer)
 
 
 nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
