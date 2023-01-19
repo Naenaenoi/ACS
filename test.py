@@ -17,15 +17,14 @@ x = sp.Symbol('X')
 
 special_Characters = ['+','-','*','/','^','X','Y']
 
-
-def dSolver(inputList):
-    for element in inputList:
-        if element in special_Characters:
-            continue
-        else:
-            int(element) 
-            output = sp.diff(x**element)
+def dSolver(entrylist):
+    for ele in entrylist:
+        if ele not in special_Characters:
+            modifiedlist = [int(ele) for ele in entrylist]
+            output = [sp.diff(x**ele) for ele in modifiedlist]
             return output
+        else:
+            continue
 
 operators = ['+','-','*','/','^']
 
