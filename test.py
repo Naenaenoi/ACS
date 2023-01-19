@@ -17,6 +17,7 @@ x = sp.Symbol('X')
 
 special_Characters = ['+','-','*','/','^','X','Y']
 
+
 def dSolver(inputList):
     for element in inputList:
         if element in special_Characters:
@@ -63,31 +64,9 @@ inp1 = input()
 [*inp1]
 
 res = [ele for ele in inp1 if ele.strip()]
-
+"""
 separated_list = sep_list_ops(res)
 organized_list = sep_list_vars(separated_list)
 answer = dSolver(organized_list)
-
-print(answer)
-
-
-nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-ops = [ '+','-','=','/','*']
-var = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-
-        
-
-
 """
-
-x = sp.Symbol('X')
-
-print(sp.diff(x**inp1))
-
-
- 
-x = sp.symbols('x') 
-I = sp.Integral(x**2,(x,0,1)) 
-v = I.doit() 
-print(latex(I),=,latex(v)) 
-"""
+print(dSolver(res))
