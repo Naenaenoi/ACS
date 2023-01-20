@@ -2,10 +2,23 @@ import sympy as sp
 import os
 x = sp.Symbol('X')
 os.system('cls')
-list1 = ['5','12','6']
 
-def listmaker(list1):
-    modifiedlist = [int(ele) for ele in list1]
-    output = [sp.diff(x**ele) for ele in modifiedlist]
+special_Characters = ['+','-','*','/','^','X','Y']
+
+print("Enter equation")
+print("")
+inp1 = input()
+[*inp1]
+
+def dSolver(entry):
+    counter = 0
+    for element in entry:
+        counter += 1
+        if element in special_Characters:
+            result = element.pop(counter)
+
+    modifiedlist = [int(element) for element in result]
+    output = [sp.diff(x**element) for element in modifiedlist]
     return output
-print(listmaker(list1))
+
+print(dSolver(inp1))
