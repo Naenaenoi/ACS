@@ -20,26 +20,17 @@ print("")
 equation = input()
 [*equation]
 
-def intmaker(entry):
-    for element in entry:
-        intlist = [int(element)]
-        return intlist
-
 def intterpreter(entry):
     try:
         for element in entry:
             intlist = [int(element)]
     except:
-        error = True
-        skip = False
         for element in entry:
-            if error == True:
-                skip = True
+            if element in skips:
                 continue
-            if skip:
-                skip = False
-                intmaker(entry)
-        return intlist
+            else:
+                intlist2 = [int(element)]
+        return intlist, intlist2
             
 
 print(intterpreter(equation))
