@@ -20,15 +20,29 @@ print("")
 equation = input()
 [*equation]
 
-def level1(equation):
-    for element in equation:
-        try:
-            intlist = [int(element) for element in equation]
-        except:
-            continue
+def intmaker(entry):
+    for element in entry:
+        intlist = [int(element)]
         return intlist
 
-print(level1(equation))
+def intterpreter(entry):
+    try:
+        for element in entry:
+            intlist = [int(element)]
+    except:
+        error = True
+        skip = False
+        for element in entry:
+            if error == True:
+                skip = True
+                continue
+            if skip:
+                skip = False
+                intmaker(entry)
+        return intlist
+            
+
+print(intterpreter(equation))
 """
 def dSolver(function,variable):
     answer = sp.diff(function,variable)
