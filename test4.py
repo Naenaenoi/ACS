@@ -8,7 +8,9 @@ os.system('cls')
 
 print("Enter equation")
 print("")
-equation = input()
+entry = input()
+[*entry]
+equation = [element for element in entry if element.strip()]
 
 def solver(function,variable):
     answer = sp.diff(function,variable)
@@ -48,16 +50,28 @@ def address_maker(entry):
             operator_counter += 1
     return everything_counter, number_counter, variable_counter, symbol_counter, operator_counter
 
-def indexer(entry):
-    addresses = address_maker(entry)
+def separator(entry):
+    operators = ['+','-','*','/']
+    sublists = []
+    current_sublist = []
     for element in entry:
-        wawa
+        if element in operators:
+            sublists.append(current_sublist)
+            current_sublist = []
+            sublists.append([element])
+        else:
+            current_sublist.append(element)
+    sublists.append(current_sublist)
+    return sublists
 
 def compiler(entry):
-    addresses = address_maker(entry)
     variable = variable_finder(entry)
+    separated_lists = separator(equation)
+    term_addresses = address_maker(separated_lists[0])
+    replaced_variable_list = 
     
-    return addresses, variable
+    
+    return replaced_variable_list, term_addresses, variable
     
 
 print(compiler(equation))

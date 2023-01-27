@@ -17,6 +17,7 @@ x = sp.Symbol('X')
 
 special_Characters = ['+','-','*','/','^','X','Y']
 
+"""
 def dSolver(entrylist):
     for ele in entrylist:
         if ele not in special_Characters:
@@ -25,10 +26,12 @@ def dSolver(entrylist):
             return output
         else:
             continue
+"""
 
-operators = ['+','-','*','/','^']
+
 
 def sep_list_ops(expression):
+    operators = ['+','-','*','/']
     sublists = []
     current_sublist = []
     for element in expression:
@@ -68,4 +71,4 @@ separated_list = sep_list_ops(res)
 organized_list = sep_list_vars(separated_list)
 answer = dSolver(organized_list)
 """
-print(dSolver(res))
+print(sep_list_ops(res))
