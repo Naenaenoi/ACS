@@ -73,13 +73,14 @@ def list_annihilator(entry):
 
 
 def intmaker(entry):
+    chars = ['**', 'X']
     try:
         for element in entry:
             int(element)
     except:
         skip = False
         for element in entry:
-            if element == '**':
+            if element in chars:
                 skip = True
                 continue
             if skip:
