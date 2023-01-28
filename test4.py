@@ -50,6 +50,7 @@ def address_maker(entry):
             operator_counter += 1
     return everything_counter, number_counter, variable_counter, symbol_counter, operator_counter
 
+#separator created by Deacon Tait, I modified it. This program would not work without it.
 def separator(entry):
     operators = ['+','-','*','/']
     sublists = []
@@ -64,14 +65,43 @@ def separator(entry):
     sublists.append(current_sublist)
     return sublists
 
+def list_annihilator(entry):
+    stringy = ""
+    for element in entry:
+        stringy += element
+    return stringy
+
+
+def intmaker(entry):
+    try:
+        for element in entry:
+            int(element)
+    except:
+        skip = False
+        for element in entry:
+            if element == '**':
+                skip = True
+                continue
+            if skip:
+                skip = False
+                continue
+            return 
+
 def compiler(entry):
+    iterations = 0
+    exp = {'^':'**'}
     variable = variable_finder(entry)
     separated_lists = separator(equation)
-    term_addresses = address_maker(separated_lists[0])
-    replaced_variable_list = 
+    addresses = address_maker(separated_lists[0])
+    exponent = addresses[0] - addresses[3] -1
     
+    intlist = intmaker(separated_lists[0])
+
+    listed_term = [exp['^'] if element == '^' else element for element in separated_lists[0]]
     
-    return replaced_variable_list, term_addresses, variable
+    stringy_term = list_annihilator(listed_term)
+
+    return intlist, stringy_term, addresses, variable
     
 
 print(compiler(equation))
