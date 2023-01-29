@@ -8,6 +8,6 @@ os.system('cls')
 
 print("Enter equation")
 print("")
-entry = input()
-[*entry]
+entry = str(input())
 
+print(sp.diff(entry))
