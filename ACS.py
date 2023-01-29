@@ -174,9 +174,42 @@ def derivative_environment():
                     break
                 else:
                     continue
+
         return final_ret
     print('')
     print(compiler(equation))
+    print('')
+    print("1: Main Menu")
+    print("2: enter another equation")
+    print("exit: close ACS")
+    print('')
+    selector = input()
+
+    if selector == '1':
+        mainMenu()
+    elif selector == '2':
+        derivative_environment()
+    elif selector == 'exit':
+        sys.exit()
+    
+
+
+def infoPage():
+    os.system('cls')
+
+    print("ACS version 1.2.0, Last updated: 1/29/2023")
+    print('')
+    print("ACS (pronounced ""Axe"") or Automatic Calculus Solver is a program intended to solve different types of formulas/equations in calculus. ")
+    print('')
+    print("The aim is to be user-friendly where user input does not need to be exact, and multiple input methods will be allowed.")
+    print('')
+    print("At the moment however, this program is a work in progress and many features of it are not active.")
+    selector = input()
+        
+    if selector == 'main menu':
+        mainMenu()
+    elif selector == 'exit':
+        sys.exit()
 
 def mainMenu():
     os.system('cls')
@@ -208,19 +241,3 @@ mainMenu()
 
 
 
-def infoPage():
-    os.system('cls')
-
-    print("ACS version 1.1.0            Last updated: 1/5/2023")
-    print('')
-    print("ACS or Automatic Calculus Solver is a program intended to solve different types of formulas/equations in calculus. ")
-    print('')
-    print("The aim is to be user-friendly where user input does not need to be exact, and multiple input methods will be allowed.")
-    print('')
-    print("At the moment however, this program is a work in progress and many features of it are not active.")
-    selector = input()
-        
-    if selector == 'main menu':
-        mainMenu()
-    elif selector == 'exit':
-        sys.exit()
