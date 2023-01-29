@@ -73,21 +73,15 @@ def list_annihilator(entry):
 
 
 def intmaker(entry):
-    chars = ['**', 'X']
-    try:
-        for element in entry:
-            int(element)
-    except:
-        skip = False
-        for element in entry:
-            if element in chars:
-                skip = True
-                continue
-            if skip:
-                skip = False
-                continue
-            return 
+    chars = ['*','X','**']
+    for element in entry:
+        if element in chars:
+            continue
+        else:
+            ints = int(element)
+    return ints
 
+    
 def compiler(entry):
     iterations = 0
     exp = {'^':'**'}
@@ -95,14 +89,14 @@ def compiler(entry):
     separated_lists = separator(equation)
     addresses = address_maker(separated_lists[0])
     exponent = addresses[0] - addresses[3] -1
-    
-    intlist = intmaker(separated_lists[0])
 
     listed_term = [exp['^'] if element == '^' else element for element in separated_lists[0]]
     
-    stringy_term = list_annihilator(listed_term)
+    string_term = list_annihilator(listed_term)
 
-    return intlist, stringy_term, addresses, variable
+    intlist = intmaker(listed_term)
+
+    return listed_term, string_term, intlist, addresses, variable
     
 
 print(compiler(equation))
