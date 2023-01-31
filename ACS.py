@@ -232,11 +232,35 @@ def integral_environment():
             stringy += element
         return stringy
     
+    def address_maker(entry):
+        numbers = ['0','1','2','3','4','5','6','7','8','9']
+        variables = ['X','Y']
+        operators = ['+','-','/','*','%']
+        symbol_list = ['^']
+        
+        everything_counter = 0
+        number_counter = 0
+        operator_counter = 0
+        variable_counter = 0
+        symbol_counter = 0
+        for element in entry:
+            everything_counter += 1
+            if element in numbers:
+                number_counter += 1
+            if element in symbol_list:
+                symbol_counter += 1
+            if element in variables:
+                variable_counter += 1
+            if element in operators:
+                operator_counter += 1
+        return everything_counter, number_counter, variable_counter, symbol_counter, operator_counter
+    
     def compiler(entry):
         exp = {'^':'**'}
         variables = {'X':'*X'}
         var = variable_finder(entry)
         separated_lists = separator(equation)
+        addresses = address_maker(separated_lists[0])
 
         result = []
         for i in separated_lists:
@@ -244,7 +268,8 @@ def integral_environment():
                 continue
             else:
                 list_term_1 = [exp['^'] if element == '^' else element for element in i]
-                term = list_annihilator(list_term_1)
+                list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1 if addresses[1] - addresses[2] =='1']
+                term = list_annihilator(list_term_2)
                 result.append(solver(term, var))
         
         final_ret = ""
