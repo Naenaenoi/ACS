@@ -258,6 +258,7 @@ def integral_environment():
     def compiler(entry):
         exp = {'^':'**'}
         variables = {'X':'*X'}
+        reverse_variables = {'*X':'X'}
         var = variable_finder(entry)
         separated_lists = separator(equation)
         addresses = address_maker(separated_lists[0])
@@ -268,9 +269,14 @@ def integral_environment():
                 continue
             else:
                 list_term_1 = [exp['^'] if element == '^' else element for element in i]
-                list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1 if addresses[1] - addresses[2] == '1']
+                list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1]
                 term = list_annihilator(list_term_2)
-                result.append(solver(term, var))
+                try:
+                    result.append(solver(term, var))
+                except:
+                    list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in list_term_2]
+                    term = list_annihilator(list_term_3)
+                    result.append(solver(term, var))
         
         final_ret = ""
         for i in result:
@@ -282,7 +288,8 @@ def integral_environment():
                     break
                 else:
                     continue
-        return final_ret
+        res = final_ret + '+ C'
+        return res
     init_printing(use_unicode=False, wrap_line=False)
     print('')
     print(compiler(equation))
