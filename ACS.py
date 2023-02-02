@@ -268,7 +268,7 @@ def integral_environment():
                 continue
             else:
                 list_term_1 = [exp['^'] if element == '^' else element for element in i]
-                list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1 if addresses[1] - addresses[2] =='1']
+                list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1 if addresses[1] - addresses[2] == '1']
                 term = list_annihilator(list_term_2)
                 result.append(solver(term, var))
         
