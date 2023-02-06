@@ -350,6 +350,3 @@ def mainMenu():
         print("Invalid selection")
 
 mainMenu()
-
-
-
