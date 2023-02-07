@@ -136,7 +136,6 @@ def derivative_environment():
                         replaced_term = [lib['X'] if element == 'X' else element for element in list_term_3]
                         term = list_annihilator(replaced_term)
                         result.append(solver(term, var))
-                    result.append(solver(term, var))
             
             final_ret = ""
             for i in result:

@@ -79,11 +79,13 @@ def derivative_environment():
         return answer
 
     def variable_finder(entry):
+        x_var = ['X','x']
+        y_var = ['Y','y']
         for element in entry:
-            if element == 'X':
+            if element in x_var:
                 variable = x
                 return variable
-            elif element == 'Y':
+            elif element in y_var: 
                 variable = y
                 return variable
 
@@ -132,26 +134,13 @@ def derivative_environment():
         for element in entry:
             stringy += element
         return stringy
-
-
-    def intmaker(entry):
-        ints = ""
-        chars = ['*','X','**']
-        for element in entry:
-            if element in chars:
-                continue
-            else:
-                ints = int(element)
-        return ints
-
         
     def compiler(entry):
         exp = {'^':'**'}
-        variables = {'X':'*X'}
+        variables = {'X':'*X', 'x':'*X'}
+        reverse_variables = {'*X':'X'}
         var = variable_finder(entry)
         separated_lists = separator(equation)
-        addresses = address_maker(separated_lists[0])
-        exponent = addresses[0] - addresses[3] -1
 
         result = []
         for i in separated_lists:
@@ -160,8 +149,14 @@ def derivative_environment():
             else:
                 list_term_1 = [exp['^'] if element == '^' else element for element in i]
                 list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1]
-                term = list_annihilator(list_term_2)
-                result.append(solver(term, var))
+                little_x = [variables['x'] if element == 'x' else element for element in list_term_2]
+                term = list_annihilator(little_x)
+                try:
+                    result.append(solver(term, var))
+                except:
+                    list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in little_x]
+                    term = list_annihilator(list_term_3)
+                    result.append(solver(term, var))
         
         final_ret = ""
         for i in result:
@@ -257,11 +252,10 @@ def integral_environment():
     
     def compiler(entry):
         exp = {'^':'**'}
-        variables = {'X':'*X'}
+        variables = {'X':'*X', 'x':'*X'}
         reverse_variables = {'*X':'X'}
         var = variable_finder(entry)
         separated_lists = separator(equation)
-        addresses = address_maker(separated_lists[0])
 
         result = []
         for i in separated_lists:
@@ -270,11 +264,12 @@ def integral_environment():
             else:
                 list_term_1 = [exp['^'] if element == '^' else element for element in i]
                 list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1]
-                term = list_annihilator(list_term_2)
+                little_x = [variables['x'] if element == 'x' else element for element in list_term_2]
+                term = list_annihilator(little_x)
                 try:
                     result.append(solver(term, var))
                 except:
-                    list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in list_term_2]
+                    list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in little_x]
                     term = list_annihilator(list_term_3)
                     result.append(solver(term, var))
         
