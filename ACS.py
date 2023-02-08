@@ -148,13 +148,13 @@ def derivative_environment():
                 continue
             else:
                 list_term_1 = [exp['^'] if element == '^' else element for element in i]
-                list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1]
-                little_x = [variables['x'] if element == 'x' else element for element in list_term_2]
-                term = list_annihilator(little_x)
+                up_val = [element.upper() for element in list_term_1]
+                list_term_2 = [variables['X'] if element == 'X' else element for element in up_val]
+                term = list_annihilator(list_term_2)
                 try:
                     result.append(solver(term, var))
                 except:
-                    list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in little_x]
+                    list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in list_term_2]
                     term = list_annihilator(list_term_3)
                     result.append(solver(term, var))
         
@@ -263,13 +263,13 @@ def integral_environment():
                 continue
             else:
                 list_term_1 = [exp['^'] if element == '^' else element for element in i]
-                list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1]
-                little_x = [variables['x'] if element == 'x' else element for element in list_term_2]
-                term = list_annihilator(little_x)
+                up_val = [element.upper() for element in list_term_1]
+                list_term_2 = [variables['X'] if element == 'X' else element for element in up_val]
+                term = list_annihilator(list_term_2)
                 try:
                     result.append(solver(term, var))
                 except:
-                    list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in little_x]
+                    list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in list_term_2]
                     term = list_annihilator(list_term_3)
                     result.append(solver(term, var))
         
