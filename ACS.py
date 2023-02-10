@@ -72,7 +72,8 @@ def derivative_environment():
     print("")
     entry = input()
     [*entry]
-    equation = [element for element in entry if element.strip()]
+    Up_equation = [element.upper() for element in entry]
+    equation = [element for element in Up_equation if element.strip()]
 
     def solver(function,var):
         answer = sp.diff(function,var)
@@ -137,7 +138,7 @@ def derivative_environment():
         
     def compiler(entry):
         exp = {'^':'**'}
-        variables = {'X':'*X', 'x':'*X'}
+        variables = {'X':'*X'}
         reverse_variables = {'*X':'X'}
         var = variable_finder(entry)
         separated_lists = separator(equation)
@@ -148,12 +149,11 @@ def derivative_environment():
                 continue
             else:
                 list_term_1 = [exp['^'] if element == '^' else element for element in i]
-                up_val = [element.upper() for element in list_term_1]
-                list_term_2 = [variables['X'] if element == 'X' else element for element in up_val]
+                list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1]
                 term = list_annihilator(list_term_2)
                 try:
                     result.append(solver(term, var))
-                except:
+                except SyntaxError:
                     list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in list_term_2]
                     term = list_annihilator(list_term_3)
                     result.append(solver(term, var))
@@ -192,7 +192,8 @@ def integral_environment():
     print("")
     entry = input()
     [*entry]
-    equation = [element for element in entry if element.strip()]
+    Up_equation = [element.upper() for element in entry]
+    equation = [element for element in Up_equation if element.strip()]
 
     def solver(function,var):
             answer = sp.integrate(function,var)
@@ -252,7 +253,7 @@ def integral_environment():
     
     def compiler(entry):
         exp = {'^':'**'}
-        variables = {'X':'*X', 'x':'*X'}
+        variables = {'X':'*X'}
         reverse_variables = {'*X':'X'}
         var = variable_finder(entry)
         separated_lists = separator(equation)
@@ -263,12 +264,11 @@ def integral_environment():
                 continue
             else:
                 list_term_1 = [exp['^'] if element == '^' else element for element in i]
-                up_val = [element.upper() for element in list_term_1]
-                list_term_2 = [variables['X'] if element == 'X' else element for element in up_val]
+                list_term_2 = [variables['X'] if element == 'X' else element for element in list_term_1]
                 term = list_annihilator(list_term_2)
                 try:
                     result.append(solver(term, var))
-                except:
+                except ValueError:
                     list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in list_term_2]
                     term = list_annihilator(list_term_3)
                     result.append(solver(term, var))
