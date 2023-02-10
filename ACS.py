@@ -136,6 +136,17 @@ def derivative_environment():
             stringy += element
         return stringy
         
+    def cleaner(entry):
+        addresses = address_maker(entry)
+        entry.replace('*','')
+        base_indexer = addresses[0] - addresses[2]
+        value_indexer = addresses[0]
+        base = entry[base_indexer]
+        value = entry[value_indexer]
+        
+        result = sups(base,value)
+        return result
+        
     def compiler(entry):
         exp = {'^':'**'}
         variables = {'X':'*X'}
@@ -168,8 +179,12 @@ def derivative_environment():
                     break
                 else:
                     continue
+        cleaned_answer = cleaner(final_ret)
+        return cleaned_answer
+    
 
-        return final_ret
+            
+    
     print('')
     print(compiler(equation))
     print('')
@@ -285,7 +300,9 @@ def integral_environment():
                     continue
         res = final_ret + '+ C'
         return res
-    init_printing(use_unicode=False, wrap_line=False)
+    
+    
+    
     print('')
     print(compiler(equation))
     print('')
