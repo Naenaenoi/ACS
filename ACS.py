@@ -136,16 +136,10 @@ def derivative_environment():
             stringy += element
         return stringy
         
-    def cleaner(entry):
-        addresses = address_maker(entry)
-        entry.replace('*','')
-        base_indexer = addresses[0] - addresses[2]
-        value_indexer = addresses[0]
-        base = entry[base_indexer]
-        value = entry[value_indexer]
+    
         
-        result = sups(base,value)
-        return result
+        #result = sups(base,value)
+        #return result
         
     def compiler(entry):
         exp = {'^':'**'}
@@ -164,7 +158,7 @@ def derivative_environment():
                 term = list_annihilator(list_term_2)
                 try:
                     result.append(solver(term, var))
-                except SyntaxError:
+                except :
                     list_term_3 = [reverse_variables['*X'] if element == '*X' else element for element in list_term_2]
                     term = list_annihilator(list_term_3)
                     result.append(solver(term, var))
@@ -179,8 +173,7 @@ def derivative_environment():
                     break
                 else:
                     continue
-        cleaned_answer = cleaner(final_ret)
-        return cleaned_answer
+        return final_ret
     
 
             
