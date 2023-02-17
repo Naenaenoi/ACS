@@ -9,17 +9,17 @@ app.geometry("400x240")
 
 def button_function():
     print("button pressed")
+    
+def integral_window():
+    wewe = int
 
 # Use CTkButton instead of tkinter Button
-button = customtkinter.CTkButton(master=app, text="CTkButton", command=button_function)
-button.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+button1 = customtkinter.CTkButton(master=app, text="Derivative Environment", command=button_function)
+button1.place(relx=0.5, rely=0.1, anchor=tkinter.CENTER)
 
-textbox = customtkinter.CTkTextbox(app)
-textbox.grid(row=0, column=0)
+button2 = customtkinter.CTkButton(master=app, text="Integral Environment", command=integral_window)
+button2.place(relx=0.5, rely=0.3, anchor=tkinter.CENTER)
 
-textbox.insert("0.0", "new text to insert")  # insert at line 0 character 0
-text = textbox.get("0.0", "end")  # get text from line 0 character 0 till the end
 
-textbox.configure(state="normal")  # configure textbox to be read-only
 
 app.mainloop()
