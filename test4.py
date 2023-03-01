@@ -1,28 +1,28 @@
 import sympy as sp
-import numpy as np
-from sympy import *
+import math
 import os
+from sympy import *
+import sys
 x = sp.Symbol('X')
 y = sp.Symbol('Y')
 os.system('cls')
 
-def replacer(entry):
-    print("Enter X-value substitution")
+def percent_error():
+    print("Input dimensions")
     print('')
-    number = input()
-    lib = {'X':number}
-    result = [lib['X'] if element == 'X' else element for element in entry]
-    return result
-
-print("Enter equation")
-print('')
-entry = input()
-[*entry]
-equation = [element for element in entry if element.strip()]
-print('')
-print("substitute number for X?")
-print('')
-answer = input()
-if answer =='yes':
-    print(replacer(equation))
-
+    dimension1 = input("Dimension 1")
+    dimension2 = input("Dimension 2")
+    dimension3 = input("Dimension 3")
+    
+    volume = dimension1 * dimension2 * dimension3
+    
+    max_volume = (dimension1 + 0.5) * (dimension2 + 0.5) * (dimension3 + 0.5)
+    min_volume = (dimension1 - 0.5) * (dimension2 - 0.5) * (dimension3 - 0.5)
+    
+    difference1 = volume - min_volume
+    difference2 = max_volume - volume
+    
+    if difference2 > difference1:
+        difference2 / volume
+    else:
+        
