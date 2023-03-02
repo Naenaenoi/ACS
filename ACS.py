@@ -1,9 +1,4 @@
-#sympy & numpy libraries for LaTeX equations
-
-#from sympy.interactive import printing
-#printing.init_printing(use_latex = True)
-#import numpy as np
-#import sympy as sp
+import math
 import sympy as sp
 import numpy as np
 from sympy import *
@@ -311,6 +306,30 @@ def integral_environment():
         integral_environment()
     elif selector == 'exit':
         sys.exit()
+        
+def sequence_environment():
+    sequence = []
+    print("Input target term")
+    print('')
+    target_term = int(input())
+    
+    for ele in range(2):
+        ele = str(input("Enter term " + str(ele+1) + " in the sequence."))
+        sequence.append(int(ele))
+    
+    d = sequence[1] - sequence[0]
+    first_term = sequence[0] 
+    
+    def calculate(n,a1,d):
+        answer = a1 + (n-1) * d
+    
+        print("Term " + str(n) + " of your sequence is " + str(answer) + ".")
+        print("")
+        print("")
+        print("")
+        
+    calculate(target_term,first_term,d)
+    
 
 def infoPage():
     os.system('cls')
@@ -336,7 +355,7 @@ def mainMenu():
     print('')
     print("1: Derivative solver")
     print("2: Integral solver")
-    print("3: Optimization solver (non-functional)")
+    print("3: Sequences solver")
     print("4: Limits solver (non-functional)")
     print("info: information about ACS")
     print("exit: close ACS")
@@ -347,6 +366,8 @@ def mainMenu():
         derivative_environment()
     elif selector == '2':
         integral_environment()
+    elif selector == '3':
+        sequence_environment()
     elif selector == 'info':
         infoPage()
     elif selector == 'exit':
