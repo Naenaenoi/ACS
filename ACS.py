@@ -332,23 +332,55 @@ def sequence_environment():
         calculate(target_term,first_term,d)
         
     def geometric():
-        sequence = []
-        print("Input target term")
-        target_term = float(input())
-        for ele in range(2):
-            ele = str(input("Enter term " + str(ele+1) + " in the sequence."))
-            sequence.append(float(ele))
+        def Equation_finder():
+            sequence = []
+            print("Input target term")
+            target_term = float(input())
+            for ele in range(2):
+                ele = str(input("Enter term " + str(ele+1) + " in the sequence."))
+                sequence.append(float(ele))
+                    
+            r = sequence[1] / sequence [0]
+            first_term = sequence[0]
+                    
+            def calculate(n,a1,r):
+                answer = a1 * r ** (n-1)
                 
-        r = sequence[1] / sequence [0]
-        first_term = sequence[0]
+                print("r = " + str(r))
+                print("a1 = " + str(a1))
+                print("Target term value = " + str(answer))
                 
-        def calculate(n,a1,r):
-            answer = r ** (n-1)
+            calculate(target_term, first_term, r)
                 
-            print("Target term value = " + answer)
-            print("a1 = " + a1)
+        def Sequence_finder():
+            sequence = []
+            print("Input target term")
+            target_term = float(input())
+            for ele in range(2):
+                ele = str(input("Enter term " + str(ele+1) + " in the sequence."))
+                sequence.append(float(ele))
+                    
+            r = sequence[1] / sequence [0]
+            first_term = sequence[0]
+                    
+            def calculate(n,a1,r):
+                answer = a1 * r ** (n-1)
                 
-        calculate(target_term, first_term, r) 
+                print("r = " + str(r))
+                print("a1 = " + str(a1))
+                print("Target term value = " + str(answer))
+            
+                
+            print("1: Sequence -> equation")
+            print("2: Equation -> sequence")
+            print('')
+            selector = input()
+            if selector == '1':
+                Equation_finder()
+            elif selector == '2':
+                Sequence_finder()
+                
+            calculate(target_term, first_term, r) 
     
     print("1: Arithmetic")
     print("2: Geometric")
