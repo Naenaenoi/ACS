@@ -308,27 +308,58 @@ def integral_environment():
         sys.exit()
         
 def sequence_environment():
-    sequence = []
-    print("Input target term")
-    print('')
-    target_term = int(input())
-    
-    for ele in range(2):
-        ele = str(input("Enter term " + str(ele+1) + " in the sequence."))
-        sequence.append(int(ele))
-    
-    d = sequence[1] - sequence[0]
-    first_term = sequence[0] 
-    
-    def calculate(n,a1,d):
-        answer = a1 + (n-1) * d
-    
-        print("Term " + str(n) + " of your sequence is " + str(answer) + ".")
-        print("")
-        print("")
-        print("")
+    def arithmetic():
+        sequence = []
+        print("Input target term")
+        print('')
+        target_term = int(input())
         
-    calculate(target_term,first_term,d)
+        for ele in range(2):
+            ele = str(input("Enter term " + str(ele+1) + " in the sequence."))
+            sequence.append(int(ele))
+        
+        d = sequence[1] - sequence[0]
+        first_term = sequence[0] 
+        
+        def calculate(n,a1,d):
+            answer = a1 + (n-1) * d
+        
+            print("Term " + str(n) + " of your sequence is " + str(answer) + ".")
+            print("")
+            print("")
+            print("")
+            
+        calculate(target_term,first_term,d)
+        
+    def geometric():
+        sequence = []
+        print("Input target term")
+        target_term = float(input())
+        for ele in range(2):
+            ele = str(input("Enter term " + str(ele+1) + " in the sequence."))
+            sequence.append(float(ele))
+                
+        r = sequence[1] / sequence [0]
+        first_term = sequence[0]
+                
+        def calculate(n,a1,r):
+            answer = r ** (n-1)
+                
+            print("Target term value = " + answer)
+            print("a1 = " + a1)
+                
+        calculate(target_term, first_term, r) 
+    
+    print("1: Arithmetic")
+    print("2: Geometric")
+    print('')
+    selector = input()
+    if selector == '1':
+        arithmetic()
+    elif selector == '2':
+        geometric()
+        
+        
     
 
 def infoPage():
