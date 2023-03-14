@@ -306,6 +306,27 @@ def integral_environment():
         integral_environment()
     elif selector == 'exit':
         sys.exit()
+
+def convert_to_float(frac_str):
+    try:
+        return float(frac_str)
+    except ValueError:
+        try:
+            num, denom = frac_str.split('/')
+        except ValueError:
+            return None
+        try:
+            leading, num = num.split(' ')
+        except ValueError:
+            return float(num) / float(denom)        
+        if float(leading) < 0:
+            sign_mult = -1
+        else:
+            sign_mult = 1
+        return float(leading) + sign_mult * (float(num) / float(denom))
+
+
+
         
 def sequence_environment():
     def arithmetic():
@@ -338,7 +359,7 @@ def sequence_environment():
             target_term = float(input())
             for ele in range(2):
                 ele = str(input("Enter term " + str(ele+1) + " in the sequence."))
-                sequence.append(float(ele))
+                sequence.append(convert_to_float(ele))
                     
             r = sequence[1] / sequence [0]
             first_term = sequence[0]
@@ -369,18 +390,20 @@ def sequence_environment():
                 print("r = " + str(r))
                 print("a1 = " + str(a1))
                 print("Target term value = " + str(answer))
+
+            calculate(target_term, first_term, r) 
             
                 
-            print("1: Sequence -> equation")
-            print("2: Equation -> sequence")
-            print('')
-            selector = input()
-            if selector == '1':
-                Equation_finder()
-            elif selector == '2':
-                Sequence_finder()
+        print("1: Sequence -> equation")
+        print("2: Equation -> sequence")
+        print('')
+        selector = input()
+        if selector == '1':
+            Equation_finder()
+        elif selector == '2':
+            Sequence_finder()
                 
-            calculate(target_term, first_term, r) 
+        
     
     print("1: Arithmetic")
     print("2: Geometric")
