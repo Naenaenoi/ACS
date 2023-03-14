@@ -391,7 +391,26 @@ def sequence_environment():
     elif selector == '2':
         geometric()
         
-        
+def coordinates_finder():
+    print("Input first number")
+    print('')
+    
+    num1 = int(input())
+    print("Input second number")
+    print('')
+    
+    num2 = int(input())
+    print("input third number")
+    print('')
+    num3 = int(input()) 
+    
+    xNum3 = num3 / num1      
+    xNum1 = num1 / num1
+    
+    yNum3 = num3 / num2
+    yNum2 = num2 / num2
+    
+    print("X: " + str(xNum3), str(xNum1) + " Y: " + str(yNum2), str(yNum3))
     
 
 def infoPage():
@@ -419,7 +438,7 @@ def mainMenu():
     print("1: Derivative solver")
     print("2: Integral solver")
     print("3: Sequences solver")
-    print("4: Limits solver (non-functional)")
+    print("4: coordinates solver")
     print("info: information about ACS")
     print("exit: close ACS")
     print('')
@@ -431,6 +450,8 @@ def mainMenu():
         integral_environment()
     elif selector == '3':
         sequence_environment()
+    elif selector == '4':
+        coordinates_finder()
     elif selector == 'info':
         infoPage()
     elif selector == 'exit':
