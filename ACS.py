@@ -1,4 +1,5 @@
-import math
+import tkinter
+import customtkinter as ctk
 import sympy as sp
 import numpy as np
 from sympy import *
@@ -7,6 +8,26 @@ import sys
 x = sp.Symbol('X')
 y = sp.Symbol('Y')
 os.system('cls')
+
+ctk.set_appearance_mode("Dark")
+ctk.set_default_color_theme("blue")
+
+app = ctk.CTk()
+app.geometry("600x300")
+app.title("Automatic Calculus Solver")
+
+def options_callback(choice):
+    if choice == 'Derivative environment':
+        Solve.configure(command = derivative_environment)
+        Solve.update()
+    elif choice == 'Integral environment':
+        Solve.configure(command = integral_environment)
+        Solve.update()
+
+options_var = ctk.StringVar(value = "Video")
+options = ctk.CTkOptionMenu(app, values = ["Derivative environment", "Integral environment", ""], command = options_callback, variable = options_var)
+options.place(x=450, y=10)
+
 #Subscript & Superscript libraries
 dict1 = {'0':'\u2070',
          '1':'\u00b9',
