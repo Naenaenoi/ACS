@@ -1,5 +1,5 @@
-import tkinter
-import customtkinter as ctk
+import scipy
+from scipy.stats import binom
 import sympy as sp
 import numpy as np
 from sympy import *
@@ -8,25 +8,6 @@ import sys
 x = sp.Symbol('X')
 y = sp.Symbol('Y')
 os.system('cls')
-
-ctk.set_appearance_mode("Dark")
-ctk.set_default_color_theme("blue")
-
-app = ctk.CTk()
-app.geometry("600x300")
-app.title("Automatic Calculus Solver")
-
-def options_callback(choice):
-    if choice == 'Derivative environment':
-        Solve.configure(command = derivative_environment)
-        Solve.update()
-    elif choice == 'Integral environment':
-        Solve.configure(command = integral_environment)
-        Solve.update()
-
-options_var = ctk.StringVar(value = "Video")
-options = ctk.CTkOptionMenu(app, values = ["Derivative environment", "Integral environment", ""], command = options_callback, variable = options_var)
-options.place(x=450, y=10)
 
 #Subscript & Superscript libraries
 dict1 = {'0':'\u2070',
@@ -456,6 +437,22 @@ def coordinates_finder():
     
     print("X: " + str(xNum3), str(xNum1) + " Y: " + str(yNum2), str(yNum3))
     
+def binomial_Distribution():
+    os.system('cls')
+    print("Number of trials")
+    print("")
+    trials = int(input())
+    print("")
+    print("Number of successes")
+    print("")
+    successes = int(input())
+    print("")
+    print("probability")
+    print("")
+    probability = float(input())
+    
+    print(binom.pmf(successes, trials, probability))
+    
 
 def infoPage():
     os.system('cls')
@@ -483,6 +480,7 @@ def mainMenu():
     print("2: Integral solver")
     print("3: Sequences solver")
     print("4: coordinates solver")
+    print("5: probability from binomial distribution")
     print("info: information about ACS")
     print("exit: close ACS")
     print('')
@@ -496,6 +494,8 @@ def mainMenu():
         sequence_environment()
     elif selector == '4':
         coordinates_finder()
+    elif selector == '5':
+        binomial_Distribution()
     elif selector == 'info':
         infoPage()
     elif selector == 'exit':
