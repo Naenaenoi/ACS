@@ -1,5 +1,5 @@
-import tkinter
 import customtkinter as ctk
+import tkinter
 import os
 import sympy as sp
 x = sp.Symbol('X')

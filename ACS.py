@@ -1,5 +1,7 @@
-import scipy
+import math
 from scipy.stats import binom
+import matplotlib.pyplot as plt
+from numpy import random
 import sympy as sp
 import numpy as np
 from sympy import *
@@ -73,7 +75,7 @@ def derivative_environment():
     equation = [element for element in Up_equation if element.strip()]
 
     def solver(function,var):
-        answer = sp.diff(function,var)
+        answer = sp.diff(function,)
         return answer
 
     def variable_finder(entry):
@@ -416,42 +418,38 @@ def sequence_environment():
     elif selector == '2':
         geometric()
         
-def coordinates_finder():
-    print("Input first number")
-    print('')
-    
-    num1 = int(input())
-    print("Input second number")
-    print('')
-    
-    num2 = int(input())
-    print("input third number")
-    print('')
-    num3 = int(input()) 
-    
-    xNum3 = num3 / num1      
-    xNum1 = num1 / num1
-    
-    yNum3 = num3 / num2
-    yNum2 = num2 / num2
-    
-    print("X: " + str(xNum3), str(xNum1) + " Y: " + str(yNum2), str(yNum3))
-    
-def binomial_Distribution():
-    os.system('cls')
-    print("Number of trials")
+def binomial_dist_solver():
+    print("Trials")
     print("")
     trials = int(input())
     print("")
-    print("Number of successes")
+    print("Successes")
     print("")
     successes = int(input())
     print("")
     print("probability")
     print("")
-    probability = float(input())
+    probability  = float(input())
+
+    round_result = round(binom.pmf(successes, trials, probability), 3)
+    print(round_result)
+
+def binom_dist_generator():
+    print("Trials")
+    print("")
+    trials = int(input())
+    print("")
+    print("size")
+    print("")
+    size = int(input())
+    print("")
+    print("probability")
+    print("")
+    probability  = float(input())
     
-    print(binom.pmf(successes, trials, probability))
+    result = random.binomial(trials, probability, size)
+
+    print(result)
     
 
 def infoPage():
@@ -479,8 +477,9 @@ def mainMenu():
     print("1: Derivative solver")
     print("2: Integral solver")
     print("3: Sequences solver")
-    print("4: coordinates solver")
-    print("5: probability from binomial distribution")
+    print("4: binomial distribution solver")
+    print("5: binomial distribution generator")
+    print("6: Normal distribution solver")
     print("info: information about ACS")
     print("exit: close ACS")
     print('')
@@ -493,9 +492,9 @@ def mainMenu():
     elif selector == '3':
         sequence_environment()
     elif selector == '4':
-        coordinates_finder()
+        binomial_dist_solver()
     elif selector == '5':
-        binomial_Distribution()
+        binom_dist_generator()
     elif selector == 'info':
         infoPage()
     elif selector == 'exit':
