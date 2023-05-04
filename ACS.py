@@ -10,6 +10,7 @@ import sys
 x = sp.Symbol('X')
 y = sp.Symbol('Y')
 os.system('cls')
+
 #Subscript & Superscript libraries
 dict1 = {'0':'\u2070',
          '1':'\u00b9',
