@@ -240,10 +240,10 @@ app.title("ACS")
 option_frame = ctk.CTkFrame(app)
 option_frame.place(relx=0.5, rely=0.4, anchor = tkinter.CENTER)
 
-derivative_button = ctk.CTkButton(option_frame, text="Derivative", command=Derivative)
+derivative_button = ctk.CTkButton(option_frame, text="Derive", command=Derivative)
 derivative_button.grid(row=0, column=0, padx=10, pady=10)
 
-integral_button = ctk.CTkButton(option_frame, text="Integral", command=Integral)
+integral_button = ctk.CTkButton(option_frame, text="Integrate", command=Integral)
 integral_button.grid(row=0, column=1, padx=10, pady=10)
 
 equation = tkinter.StringVar()
