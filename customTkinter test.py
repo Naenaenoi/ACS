@@ -13,7 +13,8 @@ app.geometry("700x400")
 
     
 
-def derivative_environment(entry):
+def derivative_environment():
+    entry = entry_box.get()
     [*entry]
     Up_equation = [element.upper() for element in entry]
     equation = [element for element in Up_equation if element.strip()]
@@ -92,10 +93,12 @@ def derivative_environment(entry):
                 else:
                     continue
         return final_ret   
-    compiler(equation) 
+    answer_label.configure(text= compiler(equation))
+    answer_label.update()
 
     
-def integral_environment(entry):
+def integral_environment():
+        entry = entry_box.get()
         [*entry]
         Up_equation = [element.upper() for element in entry]
         equation = [element for element in Up_equation if element.strip()]
@@ -167,7 +170,8 @@ def integral_environment(entry):
                         continue
             res = final_ret + '+ C'
             return res
-        int_compiler(equation)
+        answer_label.configure(text= int_compiler(equation))
+        answer_label.update()
         
     
 
@@ -175,10 +179,14 @@ def integral_environment(entry):
 def Derivative():
     solve.configure(command=derivative_environment)
     solve.update()
+    entry_box.configure(placeholder_text="Input derivative")
+    entry_box.update()
 
 def Integral():
     solve.configure(command=integral_environment)
     solve.update()
+    entry_box.configure(placeholder_text="Input integeral")
+    entry_box.update()
     
 option_frame = ctk.CTkFrame(app)
 option_frame.place(relx=0.5, rely=0.4, anchor = tkinter.CENTER)
@@ -190,11 +198,11 @@ integral_button = ctk.CTkButton(option_frame, text="Integral", command=Integral)
 integral_button.grid(row=0, column=1, padx=10, pady=10)
     
 equation = tkinter.StringVar()
-entry_box = ctk.CTkEntry(app, width=350, height=40, textvariable = equation)
-entry_box.place(relx=0.5, rely=0.8, anchor = tkinter.S)
+entry_box = ctk.CTkEntry(app, width=350, height=40, placeholder_text="Select Entrty Mode", textvariable = equation)
+entry_box.place(relx=0.4, rely=0.9, anchor = tkinter.S)
     
 solve = ctk.CTkButton(app, text="Solve", command = Derivative)
-solve.place(relx=0.5, rely=0.9, anchor = tkinter.S)
+solve.place(relx=0.8, rely=0.89, anchor = tkinter.S)
 
 answer_label = ctk.CTkLabel(app, text="")
 answer_label.place(relx=0.5, rely=0.6, anchor=tkinter.CENTER)
