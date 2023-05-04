@@ -450,10 +450,6 @@ def binom_dist_generator():
     result = random.binomial(trials, probability, size)
 
     print(result)
-
-def normal_dist():
-    
-
     
 
 def infoPage():
@@ -499,8 +495,6 @@ def mainMenu():
         binomial_dist_solver()
     elif selector == '5':
         binom_dist_generator()
-    elif selector == '6':
-        normal_dist()
     elif selector == 'info':
         infoPage()
     elif selector == 'exit':
