@@ -1,4 +1,7 @@
 import math
+from scipy.stats import binom
+import matplotlib.pyplot as plt
+from numpy import random
 import sympy as sp
 import numpy as np
 from sympy import *
@@ -71,7 +74,7 @@ def derivative_environment():
     equation = [element for element in Up_equation if element.strip()]
 
     def solver(function,var):
-        answer = sp.diff(function,var)
+        answer = sp.diff(function,)
         return answer
 
     def variable_finder(entry):
@@ -414,7 +417,42 @@ def sequence_environment():
     elif selector == '2':
         geometric()
         
-        
+def binomial_dist_solver():
+    print("Trials")
+    print("")
+    trials = int(input())
+    print("")
+    print("Successes")
+    print("")
+    successes = int(input())
+    print("")
+    print("probability")
+    print("")
+    probability  = float(input())
+
+    round_result = round(binom.pmf(successes, trials, probability), 3)
+    print(round_result)
+
+def binom_dist_generator():
+    print("Trials")
+    print("")
+    trials = int(input())
+    print("")
+    print("size")
+    print("")
+    size = int(input())
+    print("")
+    print("probability")
+    print("")
+    probability  = float(input())
+    
+    result = random.binomial(trials, probability, size)
+
+    print(result)
+
+def normal_dist():
+    
+
     
 
 def infoPage():
@@ -442,7 +480,9 @@ def mainMenu():
     print("1: Derivative solver")
     print("2: Integral solver")
     print("3: Sequences solver")
-    print("4: Limits solver (non-functional)")
+    print("4: binomial distribution solver")
+    print("5: binomial distribution generator")
+    print("6: Normal distribution solver")
     print("info: information about ACS")
     print("exit: close ACS")
     print('')
@@ -454,6 +494,12 @@ def mainMenu():
         integral_environment()
     elif selector == '3':
         sequence_environment()
+    elif selector == '4':
+        binomial_dist_solver()
+    elif selector == '5':
+        binom_dist_generator()
+    elif selector == '6':
+        normal_dist()
     elif selector == 'info':
         infoPage()
     elif selector == 'exit':
