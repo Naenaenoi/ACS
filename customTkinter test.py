@@ -1,4 +1,3 @@
-import customtkinter
 import tkinter
 import customtkinter as ctk
 import os
@@ -10,16 +9,19 @@ ctk.set_appearance_mode("dark")  # Modes: system (default), light, dark
 ctk.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
 
 app = ctk.CTk()  # create CTk window like you do with the Tk window
-app.geometry("400x240")
+app.geometry("700x400")
 
-def button_function():
-    print("button pressed")
+def default():
+    print("Nothing lol")
     
-def integral_environment():
-        os.system('cls')
-        print("Enter equation")
-        print("")
-        entry = input()
+def updater():
+    print("notig")
+    
+
+    
+
+    
+def integral_environment(entry):
         [*entry]
         Up_equation = [element.upper() for element in entry]
         equation = [element for element in Up_equation if element.strip()]
@@ -57,30 +59,7 @@ def integral_environment():
                 stringy += element
             return stringy
         
-        def address_maker(entry):
-            numbers = ['0','1','2','3','4','5','6','7','8','9']
-            variables = ['X','Y']
-            operators = ['+','-','/','*','%']
-            symbol_list = ['^']
-            
-            everything_counter = 0
-            number_counter = 0
-            operator_counter = 0
-            variable_counter = 0
-            symbol_counter = 0
-            for element in entry:
-                everything_counter += 1
-                if element in numbers:
-                    number_counter += 1
-                if element in symbol_list:
-                    symbol_counter += 1
-                if element in variables:
-                    variable_counter += 1
-                if element in operators:
-                    operator_counter += 1
-            return everything_counter, number_counter, variable_counter, symbol_counter, operator_counter
-        
-        def compiler(entry):
+        def int_compiler(entry):
             exp = {'^':'**'}
             variables = {'X':'*X'}
             reverse_variables = {'*X':'X'}
@@ -114,15 +93,24 @@ def integral_environment():
                         continue
             res = final_ret + '+ C'
             return res
-
-def integral_button():
-    root = ctk.App()
-    root.clear_Widgets()
-
-    output_label = ctk.Label(root, text=integral_environment())
-    output_label.pack()
-
-    root.run
     
+option_frame = ctk.CTkFrame(app)
+option_frame.place(relx=0.5, rely=0.4, anchor = tkinter.CENTER)
+
+derivative_button = ctk.CTkButton(option_frame, text="Derivative", command=updater)
+derivative_button.grid(row=0, column=0, padx=10, pady=10)
+
+integral_button = ctk.CTkButton(option_frame, text="Integral")
+integral_button.grid(row=0, column=1, padx=10, pady=10)
+    
+equation = tkinter.StringVar()
+entry_box = ctk.CTkEntry(app, width=350, height=40, textvariable = equation)
+entry_box.place(relx=0.5, rely=0.8, anchor = tkinter.S)
+    
+solve = ctk.CTkButton(app, text="Solve", command = default)
+solve.place(relx=0.5, rely=0.9, anchor = tkinter.S)
+
+answer_label = ctk.CTkLabel(app, text="")
+answer_label.place(relx=0.5, rely=0.6, anchor=tkinter.CENTER)
 
 app.mainloop()
