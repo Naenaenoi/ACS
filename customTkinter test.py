@@ -1,5 +1,6 @@
 import customtkinter as ctk
 import tkinter
+import math
 import os
 import sympy as sp
 x = sp.Symbol('X')
@@ -67,8 +68,11 @@ def derivative_environment():
     equation = [element for element in Up_equation if element.strip()]
 
     def solver(function, var):
-        answer = sp.diff(function, var)
-        return answer
+        try:
+            answer = sp.diff(function, var)
+            return answer
+        except:
+            return ValueError
 
     def variable_finder(entry):
         x_var = ['X','x']
@@ -151,8 +155,11 @@ def integral_environment():
         equation = [element for element in Up_equation if element.strip()]
 
         def solver(function,var):
-                answer = sp.integrate(function,var)
-                return answer
+                try:
+                    answer = sp.integrate(function,var)
+                    return answer
+                except:
+                    return ValueError
         
         def variable_finder(entry):
                 for element in entry:
@@ -220,6 +227,41 @@ def integral_environment():
         answer_label.configure(text= int_compiler(equation))
         answer_label.update()
         
+def RadiansToDegrees():
+    integral_checkbox.deselect()
+    integral_checkbox.update()
+    derivative_checkbox.deselect()
+    derivative_checkbox.update()
+    radian_checkbox.deselect()
+    radian_checkbox.update()
+
+    solve.configure(command=DegreeConvertor)
+    solve.update()
+
+def DegreeConvertor():
+    entry = float(entry_box.get())
+    result = math.degrees(entry)
+    answer_label.configure(text= result)
+    answer_label.update()
+
+
+def DegreesToRadians():
+    integral_checkbox.deselect()
+    integral_checkbox.update()
+    derivative_checkbox.deselect()
+    derivative_checkbox.update()
+    degree_checkbox.deselect()
+    degree_checkbox.update()
+
+    solve.configure(command=RadianConvertor)
+    solve.update()
+
+def RadianConvertor():
+    entry = float(entry_box.get())
+    result = math.radians(entry)
+    answer_label.configure(text= result)
+    answer_label.update()
+
     
 def Selector():
     answer_label.configure(text = "Select solver mode first")
@@ -228,6 +270,10 @@ def Selector():
 def Derivative():
     integral_checkbox.deselect()
     integral_checkbox.update()
+    degree_checkbox.deselect()
+    degree_checkbox.update()
+    radian_checkbox.deselect()
+    radian_checkbox.update()
     solve.configure(command=derivative_environment)
     solve.update()
     entry_box.configure(placeholder_text="Input derivative")
@@ -236,6 +282,10 @@ def Derivative():
 def Integral():
     derivative_checkbox.deselect()
     derivative_checkbox.update()
+    degree_checkbox.deselect()
+    degree_checkbox.update()
+    radian_checkbox.deselect()
+    radian_checkbox.update()
     solve.configure(command=integral_environment)
     solve.update()
     entry_box.configure(placeholder_text="Input integeral")
@@ -251,6 +301,12 @@ derivative_checkbox.grid(row=0, column=0, padx=10, pady=10)
 
 integral_checkbox = ctk.CTkCheckBox(option_frame, text="Integrate", command=Integral)
 integral_checkbox.grid(row=0, column=1, padx=10, pady=10)
+
+degree_checkbox = ctk.CTkCheckBox(option_frame, text = "Radians to degrees converter", command=RadiansToDegrees)
+degree_checkbox.grid(row=0, column=2, padx=10, pady=10)
+
+radian_checkbox = ctk.CTkCheckBox(option_frame, text="Degrees to radians converter", command= DegreesToRadians)
+radian_checkbox.grid(row=0, column=3, padx=10, pady=10)
 
 equation = tkinter.StringVar()
 entry_box = ctk.CTkEntry(app, width=350, height=40, placeholder_text="Select Entrty Mode", textvariable = equation)
