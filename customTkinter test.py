@@ -221,15 +221,21 @@ def integral_environment():
         answer_label.update()
         
     
-
+def Selector():
+    answer_label.configure(text = "Select solver mode first")
+    answer_label.update()
 
 def Derivative():
+    integral_checkbox.deselect()
+    integral_checkbox.update()
     solve.configure(command=derivative_environment)
     solve.update()
     entry_box.configure(placeholder_text="Input derivative")
     entry_box.update()
 
 def Integral():
+    derivative_checkbox.deselect()
+    derivative_checkbox.update()
     solve.configure(command=integral_environment)
     solve.update()
     entry_box.configure(placeholder_text="Input integeral")
@@ -240,17 +246,17 @@ app.title("ACS")
 option_frame = ctk.CTkFrame(app)
 option_frame.place(relx=0.5, rely=0.4, anchor = tkinter.CENTER)
 
-derivative_button = ctk.CTkButton(option_frame, text="Derive", command=Derivative)
-derivative_button.grid(row=0, column=0, padx=10, pady=10)
+derivative_checkbox = ctk.CTkCheckBox(option_frame, text="Derive", command=Derivative)
+derivative_checkbox.grid(row=0, column=0, padx=10, pady=10)
 
-integral_button = ctk.CTkButton(option_frame, text="Integrate", command=Integral)
-integral_button.grid(row=0, column=1, padx=10, pady=10)
+integral_checkbox = ctk.CTkCheckBox(option_frame, text="Integrate", command=Integral)
+integral_checkbox.grid(row=0, column=1, padx=10, pady=10)
 
 equation = tkinter.StringVar()
 entry_box = ctk.CTkEntry(app, width=350, height=40, placeholder_text="Select Entrty Mode", textvariable = equation)
 entry_box.place(relx=0.4, rely=0.9, anchor = tkinter.S)
     
-solve = ctk.CTkButton(app, text="Solve", command = Derivative)
+solve = ctk.CTkButton(app, text="Solve", command = Selector)
 solve.place(relx=0.8, rely=0.89, anchor = tkinter.S)
 
 answer_label = ctk.CTkLabel(app, text="", font=("TkDefaultFont",20))
